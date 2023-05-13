@@ -2,7 +2,8 @@
   "name": "backseat-pilot",
   "displayName": "Backseat Pilot",
   "description": "Tool to help use local llm with vscode.",
-  "version": "0.0.1",
+  "icon": "icon.jpeg",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -43,6 +44,7 @@
   "devDependencies": {
     "esbuild": "^0.17.19"
   },
+  "publisher": "Matthoffner",
   "repository": {
     "url": "https://github.com/matthoffner/backseat-pilot"
   }
