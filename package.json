@@ -3,7 +3,7 @@
   "displayName": "Backseat Pilot",
   "description": "Tool to help use local LLM with vscode.",
   "icon": "backseat-pilot.jpeg",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -17,6 +17,11 @@
     "backseat-pilot.chat"
   ],
   "contributes": {
+    "configuration": {
+      "backseat-pilot": {
+        "url": ""
+      }
+    },
     "commands": [
       {
         "command": "backseat-pilot.llm_refactor",
@@ -39,7 +44,8 @@
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
   },
   "dependencies": {
-    "@vscode/vsce": "^2.18.0"
+    "@vscode/vsce": "^2.18.0",
+    "node-fetch": "^3.3.1"
   },
   "devDependencies": {
     "esbuild": "^0.17.19"
