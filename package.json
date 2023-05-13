@@ -1,7 +1,7 @@
 {
-  "name": "llm-helper-vscode",
-  "displayName": "LLM Helper VSCode",
-  "description": "Tool to help integrate local llms into vscode.",
+  "name": "backseat-pilot",
+  "displayName": "Backseat Pilot",
+  "description": "Tool to help use local llm with vscode.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.77.0"
@@ -11,22 +11,22 @@
   ],
   "main": "./out/main.js",
   "activationEvents": [
-    "llm-helper.llm_refactor",
-    "llm-helper.llm_description2code",
-    "llm-helper.chat"
+    "backseat-pilot.llm_refactor",
+    "backseat-pilot.llm_description2code",
+    "backseat-pilot.chat"
   ],
   "contributes": {
     "commands": [
       {
-        "command": "llm-helper.llm_refactor",
+        "command": "backseat-pilot.llm_refactor",
         "title": "LLM Refactor"
       },
       {
-        "command": "llm-helper.llm_description2code",
+        "command": "backseat-pilot.llm_description2code",
         "title": "LLM Description 2 Code"
       },
       {
-        "command": "llm-helper.chat",
+        "command": "backseat-pilot.chat",
         "title": "LLM Chat"
       }
     ]
@@ -44,6 +44,6 @@
     "esbuild": "^0.17.19"
   },
   "repository": {
-    "url": "https://github.com/matthoffner/llm-helper-vscode"
+    "url": "https://github.com/matthoffner/backseat-pilot"
   }
 }
