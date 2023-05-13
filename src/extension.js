@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 export async function activate(context) {
-	let disposableRefactor = vscode.commands.registerCommand('llm-helper.llm_refactor', async () => {
+	let disposableRefactor = vscode.commands.registerCommand('backseat-pilot.llm_refactor', async () => {
 		const selectedTextResult = getSelectedTextAndLanguage();
 		const selectedText = selectedTextResult[0];
 		console.log(`Selected text: ${selectedText}\n\n========\n`);
@@ -14,7 +14,7 @@ export async function activate(context) {
 
 	context.subscriptions.push(disposableRefactor);
 
-	let disposableText2Code = vscode.commands.registerCommand('llm-helper.llm_description2code', async () => {
+	let disposableText2Code = vscode.commands.registerCommand('backseat-pilot.llm_description2code', async () => {
 		const selectedTextResult = getSelectedTextAndLanguage();
 		const selectedText = selectedTextResult[0];
 		const lang = selectedTextResult[1];
@@ -27,7 +27,7 @@ export async function activate(context) {
 	});
 	context.subscriptions.push(disposableText2Code);
 
-	let disposableChat = vscode.commands.registerCommand('llm-helper.chat', async () => {
+	let disposableChat = vscode.commands.registerCommand('backseat-pilot.chat', async () => {
 		const selectedTextResult = getSelectedTextAndLanguage();
 		const selectedText = selectedTextResult[0];
 		const lang = selectedTextResult[1];
