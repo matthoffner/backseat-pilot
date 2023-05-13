@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import fetch from 'node-fetch';
 
 export async function activate(context) {
 	let disposableRefactor = vscode.commands.registerCommand('backseat-pilot.llm_refactor', async () => {
@@ -42,11 +43,12 @@ export async function activate(context) {
 
 
 async function llmChat(message) {
+	const llmUrl = await vscode.workspace.getConfiguration('backseat-pilot').get('url') || 'http://localhost:8000/v1/completions';
 	const request = JSON.stringify({
 		prompt: message,
 		stop: []
 	});
-	const response = await fetch('http://localhost:8000/v1/completions', {
+	const response = await fetch(llmUrl, {
 		"headers": {
 			"content-type": "application/json"
 		},
