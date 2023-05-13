@@ -1,6 +1,6 @@
 # backseat-pilot
 
-A slightly opinionated, hackable vscode extension for running local llms. 
+vscode extension using llm to write, refactor and prompt.
 
 ### server
 
@@ -12,7 +12,7 @@ python3 -m llama_cpp.server --model ~/models/wizardLM-7B.ggml.q5_1.bin -n_thread
 
 ### extension
 
-For now it only runs on `http://localhost:8080/chat`. Uses esbuild
+For now it only runs on `http://localhost:8000/v1/completions`. Uses esbuild.
 
 ```sh
 npx vsce package
