@@ -10,6 +10,11 @@
     "Other"
   ],
   "main": "./out/main.js",
+  "activationEvents": [
+    "llm-helper.llm_refactor",
+    "llm-helper.llm_description2code",
+    "llm-helper.chat"
+  ],
   "contributes": {
     "commands": [
       {
@@ -28,18 +33,17 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run esbuild-base -- --minify",
-    "esbuild-base": "esbuild ./src/extension.mjs --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node --loader:.node=file",
+    "esbuild-base": "esbuild ./src/extension.js --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node --loader:.node=file",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
   },
   "dependencies": {
-    "@llama-node/llama-cpp": "^0.1.0",
-    "@vscode/vsce": "^2.18.0",
-    "llama-node": "^0.1.0",
-    "toml": "^3.0.0",
-    "vsce": "^2.15.0"
+    "@vscode/vsce": "^2.18.0"
   },
   "devDependencies": {
-    "esbuild": "^0.17.18"
+    "esbuild": "^0.17.19"
+  },
+  "repository": {
+    "url": "https://github.com/matthoffner/llm-helper-vscode"
   }
 }
