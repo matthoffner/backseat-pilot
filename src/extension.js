@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import fetch from 'node-fetch';
 
+
 export async function activate(context) {
-	let disposableRefactor = vscode.commands.registerCommand('backseat-pilot.llm_refactor', async () => {
+	let disposableRefactor = vscode.commands.registerCommand('backseat-pilot.llm_refactor', async (input) => {
 		const selectedTextResult = getSelectedTextAndLanguage();
 		const selectedText = selectedTextResult[0];
 		console.log(`Selected text: ${selectedText}\n\n========\n`);
@@ -10,12 +11,11 @@ export async function activate(context) {
 		const result = await llmChat(message);
 		console.log(result);
 		await replaceSelectedText(result);
-
 	});
 
 	context.subscriptions.push(disposableRefactor);
 
-	let disposableText2Code = vscode.commands.registerCommand('backseat-pilot.llm_description2code', async () => {
+	let disposableText2Code = vscode.commands.registerCommand('backseat-pilot.llm_description2code', async (input) => {
 		const selectedTextResult = getSelectedTextAndLanguage();
 		const selectedText = selectedTextResult[0];
 		const lang = selectedTextResult[1];
@@ -24,11 +24,11 @@ export async function activate(context) {
 		const result = await llmChat(message);
 		console.log(result);
 		await replaceSelectedText("\n"+result, true);
-
 	});
 	context.subscriptions.push(disposableText2Code);
 
-	let disposableChat = vscode.commands.registerCommand('backseat-pilot.chat', async () => {
+	let disposableChat = vscode.commands.registerCommand('backseat-pilot.chat', async (input) => {
+		console.log(input);
 		const selectedTextResult = getSelectedTextAndLanguage();
 		const selectedText = selectedTextResult[0];
 		const lang = selectedTextResult[1];
@@ -41,22 +41,22 @@ export async function activate(context) {
 	context.subscriptions.push(disposableChat);
 }
 
-
 async function llmChat(message) {
-	const llmUrl = await vscode.workspace.getConfiguration('backseat-pilot').get('url') || 'http://localhost:8000/v1/completions';
+	const config = await vscode.workspace.getConfiguration('backseat-pilot');
+	const llmUrl = config.get('url') || 'http://localhost:8000/v1/completions';
+	const maxTokens = config.get('maxTokens') || 512;
 	const request = JSON.stringify({
+		max_tokens: maxTokens,
 		prompt: message,
 		stop: []
 	});
-	const response = await fetch(llmUrl, {
-		"headers": {
-			"content-type": "application/json"
-		},
-		"method": "POST",
-		"body": request,
+	const response = await fetch(llmUrl, { headers: { "content-type": "application/json" },
+	    method: "POST",
+		body: request,
 	});
 	const result = await response.json();
 	console.log(result);
+	// const parsed = config.parser ? eval(config.parser) : result.choices.map(choice => choice.text).join('\n');
 	
 	return result.choices.map(choice => choice.text).join('\n');
 }
@@ -102,3 +102,4 @@ async function replaceSelectedText(text, appendAfterSelection = false) {
 		await editor.edit(editBuilder => editBuilder.replace(selection, text));
 	}
 }
+
