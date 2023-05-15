@@ -1,21 +1,20 @@
 # backseat-pilot
 
-vscode extension using llm to write, refactor and prompt.
+![https://marketplace.visualstudio.com/items?itemName=matthoffner.backseat-pilot](https://vsmarketplacebadges.dev/version-short/matthoffner.backseat-pilot.svg)
+
+vscode + local LLMs
 
 ### server
 
-based on the [llama-cpp-python](https://github.com/abetlen/llama-cpp-python/blob/main/llama_cpp/server/app.py) server example.
-
-```sh
-python3 -m llama_cpp.server --model ~/models/wizardLM-7B.ggml.q5_1.bin -n_threads 8 --use_mlock true --use_mmap true
-```
+based on [llama-cpp-python](https://github.com/abetlen/llama-cpp-python/blob/main/llama_cpp/server/app.py) (v1/completions) server example.
 
 ### extension
 
-LLM url is configuraable:
+cmd + shift + p => settings json
 
 ```json
-"backseat-pilot.url": "http://localhost:8000/v1/completions"
+"backseat-pilot.url": "http://localhost:8000/v1/completions",
+"backseat-pilot.maxTokens": "512"
 ```
 
 Publish your own version
@@ -24,4 +23,8 @@ Publish your own version
 npx vsce package
 ```
 
+### usage
+
 Commands based on [ai_extension_vscode](https://github.com/garland3/ai_extension_vscode).
+
+cmd + shift + p => `LLM Chat`, `LLM Refactor`, `LLM Description 2 Code`
