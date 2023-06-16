@@ -58,7 +58,7 @@ async function llmChat(message) {
 	console.log(result);
 	// const parsed = config.parser ? eval(config.parser) : result.choices.map(choice => choice.text).join('\n');
 	
-	return result.choices.map(choice => choice.text).join('\n');
+	return result.choices && result.choices.length ? result.choices.map(choice => choice.text).join('\n') : result;
 }
 
 // Helper function to get the selected text
