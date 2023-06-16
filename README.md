@@ -1,8 +1,8 @@
 # 💺 backseat-pilot 💺
 
-![https://marketplace.visualstudio.com/items?itemName=matthoffner.backseat-pilot](https://vsmarketplacebadges.dev/version-short/matthoffner.backseat-pilot.svg)
+## https://marketplace.visualstudio.com/items?itemName=matthoffner.backseat-pilot
 
-Copilot's are meant to be hackable, and that's what this extension is meant to be. This is less auto-complete and more auto-fill, thus the "backseat".
+This is less auto-complete and more auto-fill, thus the "backseat".
 
 ### server
 
