@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 import fetch from 'node-fetch';
 
-
 export async function activate(context) {
 	let disposableRefactor = vscode.commands.registerCommand('backseat-pilot.llm_refactor', async (input) => {
 		const selectedTextResult = getSelectedTextAndLanguage();
@@ -22,21 +21,22 @@ export async function activate(context) {
 		console.log(`Selected text: ${selectedText}\nLang is ${lang}`);
 		const message = `Refactor this text description into ${lang} code. Only return code. \n\n=======\n${selectedText}\n==========`;
 		const result = await llmChat(message);
+
 		console.log(result);
 		await replaceSelectedText("\n"+result, true);
 	});
 	context.subscriptions.push(disposableText2Code);
 
-	let disposableChat = vscode.commands.registerCommand('backseat-pilot.chat', async (input) => {
-		console.log(input);
-		const selectedTextResult = getSelectedTextAndLanguage();
-		const selectedText = selectedTextResult[0];
-		const lang = selectedTextResult[1];
-		console.log(`Selected text: ${selectedText}\nLang is ${lang}`);
-		const message = selectedText;
-		const result = await llmChat(message);
-		console.log(result);
-		await replaceSelectedText("\n"+result, true);
+	let disposableChat = vscode.commands.registerCommand('backseat-pilot.chat', async () => {
+		vscode.window.showInputBox({
+			prompt: 'Enter your LLM prompt',
+			placeHolder: 'Prompt...',
+		  }).then(async (searchQuery) => {
+			if (searchQuery) {				
+				const result = await llmChat(searchQuery);
+				await replaceSelectedText("\n"+result, true);
+			}
+		});
 	});
 	context.subscriptions.push(disposableChat);
 }
@@ -44,9 +44,7 @@ export async function activate(context) {
 async function llmChat(message) {
 	const config = await vscode.workspace.getConfiguration('backseat-pilot');
 	const llmUrl = config.get('url') || 'http://localhost:8000/v1/completions';
-	const maxTokens = config.get('maxTokens') || 512;
 	const request = JSON.stringify({
-		max_tokens: maxTokens,
 		prompt: message,
 		stop: []
 	});
@@ -55,9 +53,6 @@ async function llmChat(message) {
 		body: request,
 	});
 	const result = await response.json();
-	console.log(result);
-	// const parsed = config.parser ? eval(config.parser) : result.choices.map(choice => choice.text).join('\n');
-	
 	return result.choices && result.choices.length ? result.choices.map(choice => choice.text).join('\n') : result;
 }
 
