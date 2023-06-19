@@ -32,5 +32,5 @@ cmd + shift + p => `LLM Chat`, `LLM Refactor`, `LLM Description 2 Code`
 ### other models/projects to try
 
 ### 🧙‍♂️ wizardcoder (try here https://huggingface.co/spaces/matthoffner/wizardcoder-ggml)
-### 💫 starchat beta (try here https://huggingface.co/spaces/matthoffner/starchat-beta)
+### 💫 starchat beta (try here https://huggingface.co/spaces/matthoffner/starchat-ggml)
 
