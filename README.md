@@ -1,24 +1,34 @@
-# 💺 backseat-pilot 💺
+# 💺 backseat-pilot 🛩️
 
-## https://marketplace.visualstudio.com/items?itemName=matthoffner.backseat-pilot
+Commands based on [ai_extension_vscode](https://github.com/garland3/ai_extension_vscode).
 
-This is less auto-complete and more auto-fill, thus the "backseat".
+`LLM Chat`, `LLM Refactor`, `LLM Description 2 Code`
 
-### extension
+## LLM Chat
+
+Launches window to prompt and write
+
+## LLM Refactor
+
+Highlight code snippet and refactor
+
+## LLM Description 2 Code
+
+Highlight a prompt and write code
+
+### Configuration
 
 ```json
 "backseat-pilot.url": "https://matthoffner-wizardcoder-ggml.hf.space/v1/completions"
 ```
 
-### usage
+### Where do download
 
-Commands based on [ai_extension_vscode](https://github.com/garland3/ai_extension_vscode).
+## https://marketplace.visualstudio.com/items?itemName=matthoffner.backseat-pilot
 
-cmd + shift + p => `LLM Chat`, `LLM Refactor`, `LLM Description 2 Code`
-
-
-### other models/projects to try
+### Coding specialized models to try
 
 ### 🧙‍♂️ wizardcoder (try here https://huggingface.co/spaces/matthoffner/wizardcoder-ggml)
 ### 💫 starchat beta (try here https://huggingface.co/spaces/matthoffner/starchat-ggml)
+### 🎅 smol santacoder (try here https://huggingface.co/spaces/matthoffner/santacoder-ggml)
 
