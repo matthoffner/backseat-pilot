@@ -4,22 +4,10 @@
 
 This is less auto-complete and more auto-fill, thus the "backseat".
 
-### server
-
-Originally based on [llama-cpp-python](https://github.com/abetlen/llama-cpp-python/blob/main/llama_cpp/server/app.py) (v1/completions) server example.
-
 ### extension
 
-cmd + shift + p => settings json
-
 ```json
-"backseat-pilot.url": "http://localhost:8000/v1/completions"
-```
-
-Publish your own version
-
-```sh
-npx vsce package
+"backseat-pilot.url": "https://matthoffner-wizardcoder-ggml.hf.space/v1/completions"
 ```
 
 ### usage
