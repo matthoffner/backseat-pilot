@@ -26,11 +26,12 @@ Highlight a prompt and write code
 
 ## https://marketplace.visualstudio.com/items?itemName=matthoffner.backseat-pilot
 
-## Coding specialized models to try
+## Specialized coding models to try
 
-### 🧙‍♂️ wizardcoder (try here https://huggingface.co/spaces/matthoffner/wizardcoder-ggml)
-### 💫 starchat beta (try here https://huggingface.co/spaces/matthoffner/starchat-ggml)
-### 🎅 smol santacoder (try here https://huggingface.co/spaces/matthoffner/santacoder-ggml)
+### 🙏 NewHope (https://huggingface.co/TheBloke/NewHope-GGML)
+### 🧙‍♂️ wizardcoder (https://huggingface.co/spaces/matthoffner/wizardcoder-ggml)
+### 💫 starchat beta (https://huggingface.co/spaces/matthoffner/starchat-ggml)
+### 🎅 smol santacoder (https://huggingface.co/spaces/matthoffner/santacoder-ggml)
 
 ## Other copilot projects/extensions
 
